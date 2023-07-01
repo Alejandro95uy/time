@@ -1,0 +1,21 @@
+
+				_ _  _ ____ ___ ____ _  _ ____ ____ _ ____ _  _ ____ ____ 
+				| |\ | [__   |  |__/ |  | |    |    | |  | |\ | |___ [__  
+				| | \| ___]  |  |  \ |__| |___ |___ | |__| | \| |___ ___] 
+				=========================================================
+		
+				Paso a seguir para un buen funcionamiento del Programa
+	
+		1) Debe tener instalado el mysql previamente 
+		2) No debe haber una base de datos llamada proyecto
+		3) Para iniciar el programa debe ejecutar el sell script TIME de la carpeta TIME 
+	
+				¡Gracias por su atención y que disfrute el software!
+				
+					*****************************************
+					*					*
+					*	  time Versión 2.1 beta 	*
+					*	Developed by LDR Systems	*
+					*	    Aún en desarrollo		*
+					*					*
+					*****************************************  

@@ -1,0 +1,93 @@
+#!/bin/bash
+	
+################################## localizar carpeta del programa
+
+	clear
+	cd /home
+	find -type d -name "time-v2.1-beta" > "/tmp/location"
+		
+	location=$( cat "/tmp/location" )
+
+######################### inicia el programa
+
+for i in `seq 1 100` ;do
+	
+	clear
+	sh "$location/desing/logo.sh"
+	
+	loading="$loading█"
+	
+	echo "\t [ $i% ] $loading"
+	sleep 0.05
+	
+################################ crear y localizar carpeta temporal del programa
+
+if [ $i -eq 50 ];then
+
+	if [ ! -d "/tmp/Undefined Project" ];then
+	
+		mkdir -p "/tmp/Undefined Project/search" "/tmp/Undefined Project/bin" "/tmp/Undefined Project/sbin"
+		mkdir -p "/tmp/Undefined Project/report" "/tmp/Undefined Project/adminsys"
+	fi
+
+	temp="/tmp/Undefined Project"
+
+fi
+############################# Creando carpeta de archivos
+
+if [ $i -eq 75 ];then
+
+	if [ ! -d "/home/`whoami`/.time/" ];then
+
+		mkdir -p "/home/`whoami`/.time/log" "/home/`whoami`/.time/backup" "/home/`whoami`/.time/print"
+	fi
+
+fi
+############################## relaiza el primer usuario del programa
+
+if [ $i -eq 100 ];then
+	
+	admin=$( mysql -uroot -proot -e "
+		show databases;" | grep -c "proyecto" )
+
+	if [ $admin -eq 0 ];then
+	
+		clear
+		sh "$location/desing/logo.sh"
+		sleep 0.5
+	
+		mysql -uroot -proot < "$location/database.sql"
+	
+		sh "$location/bin/add_functionary.sh" 1
+		echo
+		sh "$location/desing/message_box.sh" boot
+		
+		clear
+		sh "$location/desing/logo.sh"
+		sleep 1
+	
+	else
+	
+		empty=$( mysql -uroot -proot -D 'proyecto' -e "
+			select count(CI) from admin;" | sed -n 2p )
+		if [ $empty -eq 0 ];then
+		
+			
+			sh "$location/bin/add_functionary.sh" 1
+			echo
+			sh "$location/desing/message_box.sh" boot
+		
+			clear
+			sh "$location/desing/logo.sh"
+			sleep 1
+		
+		fi
+	fi
+fi
+
+done
+
+sleep 1
+
+sh "$location/login.sh"
+
